@@ -166,8 +166,8 @@ class Ant {
           const h = this.simulation.home;
 
           let reward = 0;
-          const dc = Math.abs((c.x - h.x) + (c.y - h.y));
-          const da = Math.abs((this.x - h.x) + (this.y - h.y));
+          const dc = Math.abs(c.x - h.x) + Math.abs(c.y - h.y);
+          const da = Math.abs(this.x - h.x) + Math.abs(this.y - h.y);
 
           if (dc > da) {
             reward = -this.simulation.vars.homeRewardOffset;

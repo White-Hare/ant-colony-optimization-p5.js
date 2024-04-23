@@ -11,8 +11,8 @@ let WALL = 4;
 let sim;
 
 const sizeMultiplier = 4;
-const pixelWidth = 50;
-const pixelHeight = 50;
+const pixelWidth = 100;
+const pixelHeight = 100;
 
 const homeColorHash = "#445533";
 const antColorHash = "#00ddaa";
@@ -27,11 +27,13 @@ class SimulationVars {
         this.sight = 5;
         this.foodPheremoneDecay = 0.99;
         this.homePheremoneDecay = 0.97;
-        this.numberOfAnts = 10;
+        this.numberOfAnts = 50;
         this.pheremoneColorIntensity = 30;
+        
         this.randomDirectionChance = 0.02;
+
         this.homeRewardOffset = 100;
-        this.scorePower = 4;
+        this.scorePower = 3;
         this.cornetOffset = 5;
     }
 }
