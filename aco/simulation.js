@@ -27,6 +27,9 @@ class SimulationVars {
         this.sight = 5;
         this.foodPheremoneDecay = 0.99;
         this.homePheremoneDecay = 0.97;
+
+        this.pheremoneThreshold = 0.1;
+
         this.numberOfAnts = 50;
         this.pheremoneColorIntensity = 30;
         
@@ -35,9 +38,6 @@ class SimulationVars {
         this.homeRewardOffset = 100;
         this.scorePower = 3;
         this.cornetOffset = 5;
-
-        this.pheremoneIntensityPunishement = 0.70;
-        this.pheremoneIntensityReward = 1.1;
     }
 }
 
@@ -183,9 +183,16 @@ class Simulation {
             let c = this.cells[i];
             if (c.foodPheremone > 0) {
                 c.foodPheremone *= this.vars.foodPheremoneDecay;
+                if(c.foodPheremone < this.vars.pheremoneThreshold){
+                    c.foodPheremone = 0;
+                }
             }
             if (c.homePheremone > 0) {
                 c.homePheremone *= this.vars.homePheremoneDecay;
+            
+                if(c.homePheremone < this.vars.pheremoneThreshold){
+                    c.homePheremone = 0;
+                }
             }
         }
 

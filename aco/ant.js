@@ -6,6 +6,8 @@ class Ant {
     this.x = x;
     this.y = y;
     this.steps = 0;
+    this.pheremoneIntensity = Math.random() * 2;
+
     //Angles are in increments of 45 degrees, clockwise, with 0 = north
     this.angle = 0;
     this.carryingFood = false;
@@ -30,12 +32,7 @@ class Ant {
 
 
   get isDead() {
-    const r = this.steps > this.lifespan;
-    if(r){
-      this.pheremoneIntensity *= this.simulation.vars.pheremoneIntensityPunishement;
-      this.pheremoneIntensity = Math.max(this.pheremoneIntensity, 1);
-    }
-    return r;
+     return this.steps > this.lifespan;
   }
 
   respawnAtCell(c) {
@@ -43,6 +40,7 @@ class Ant {
     this.y = c.y;
     this.randomizeDirection();
     this.steps = 0;
+    this.pheremoneIntensity = Math.random() * 2;
   }
 
   shouldRespawn() {
