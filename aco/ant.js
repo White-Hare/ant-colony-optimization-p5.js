@@ -33,7 +33,7 @@ class Ant {
     const r = this.steps > this.lifespan;
     if(r){
       this.pheremoneIntensity *= this.simulation.vars.pheremoneIntensityPunishement;
-      this.pheremoneIntensity = Math.max(pheremoneIntensity, 1);
+      this.pheremoneIntensity = Math.max(this.pheremoneIntensity, 1);
     }
     return r;
   }
