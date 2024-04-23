@@ -35,6 +35,9 @@ class SimulationVars {
         this.homeRewardOffset = 100;
         this.scorePower = 3;
         this.cornetOffset = 5;
+
+        this.pheremoneIntensityPunishement = 0.70;
+        this.pheremoneIntensityReward = 1.1;
     }
 }
 
@@ -156,7 +159,7 @@ class Simulation {
                     a.steps = 0;
 
                     this.clearFood(fwdCell);
-
+                    this.pheremoneIntensity *= this.vars.pheremoneIntensityReward;
                     a.lookForHome();
 
                 } else {
@@ -166,9 +169,9 @@ class Simulation {
 
             if (!a.isDead && c.type == EMPTY && c.x != a.x && c.y != a.y) {
                 if (a.carryingFood) {
-                    c.foodPheremone += 1;
+                    c.foodPheremone += 1 * a.pheremoneIntensity;
                 } else {
-                    c.homePheremone += 1;
+                    c.homePheremone += 1 * a.pheremoneIntensity;
                 }
             }
 

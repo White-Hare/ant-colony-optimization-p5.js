@@ -20,6 +20,8 @@ class Ant {
       { x: -1, y: 0 }, //W,
       { x: -1, y: -1 } //NW
     ];
+
+    this.pheremoneIntensity = 1;
   }
 
   get lifespan() {
@@ -28,7 +30,12 @@ class Ant {
 
 
   get isDead() {
-    return this.steps > this.lifespan;
+    const r = this.steps > this.lifespan;
+    if(r){
+      this.pheremoneIntensity *= this.simulation.vars.pheremoneIntensityPunishement;
+      this.pheremoneIntensity = Math.max(pheremoneIntensity, 1);
+    }
+    return r;
   }
 
   respawnAtCell(c) {
