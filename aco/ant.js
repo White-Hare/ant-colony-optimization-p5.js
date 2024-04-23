@@ -177,7 +177,8 @@ class Ant {
           }
 
 
-          return c.homePheremone + reward;
+          //return c.homePheremone + reward;
+          return reward;
         }
       }
 
@@ -221,7 +222,7 @@ class Ant {
     }
 
 
-    if (totalScore === 0 || this.simulation.vars.randomDirectionChance < Math.random()) {
+    if (totalScore === 0 || (1 - this.simulation.vars.randomDirectionChance) < Math.random()) {
       this.walkRandomly();
     }
     else {
@@ -233,6 +234,7 @@ class Ant {
 
         if (r < t) {
           bestDirection = sensed[i];
+          break;
         }
       }
 
@@ -242,12 +244,12 @@ class Ant {
 
       if (bestDirection == fwdRight) {
         this.turnRight();
-        fwdX = fwdRight.x;
-        fwdY = fwdRight.y;
+        // fwdX = fwdRight.x;
+        // fwdY = fwdRight.y;
       } else if (bestDirection == fwdLeft) {
         this.turnLeft();
-        fwdX = fwdLeft.x;
-        fwdY = fwdLeft.y;
+        // fwdX = fwdLeft.x;
+        // fwdY = fwdLeft.y;
       } else {
         fwdX = fwd.x;
         fwdY = fwd.y;

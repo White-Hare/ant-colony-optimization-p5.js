@@ -26,11 +26,11 @@ class SimulationVars {
         this.lifespan = 1500;
         this.sight = 5;
         this.foodPheremoneDecay = 0.99;
-        this.homePheremoneDecay = 0.98;
+        this.homePheremoneDecay = 0.97;
         this.numberOfAnts = 10;
         this.pheremoneColorIntensity = 30;
         this.randomDirectionChance = 0.02;
-        this.homeRewardOffset = 10;
+        this.homeRewardOffset = 100;
         this.scorePower = 4;
         this.cornetOffset = 5;
     }
